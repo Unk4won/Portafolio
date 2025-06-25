@@ -15,7 +15,7 @@ const currentSectionColor = "white"
     // Contenedor semántico accesible con fondo adaptable claro/oscuro
     <SectionWrapper
       id="skills"
-      colorSection=" dark:bg-black"
+      colorSection="bg-black"
       role="region"
       aria-labelledby="skills-main-heading"
     >
@@ -32,7 +32,7 @@ const currentSectionColor = "white"
         >
           Skills
         </h2>
-        <p className="max-w-xl mx-auto text-gray-600 dark:text-gray-400">
+        <p className="max-w-xl mx-auto text-gray-600 ">
           These are the technologies and tools I use to build modern fullstack web apps.
         </p>
       </div>
