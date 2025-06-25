@@ -155,10 +155,6 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
 
           {/* Botones de enlaces externos */}
           <div className="flex gap-3 pt-4 mt-auto border-t border-gray-200 dark:border-zinc-700">
-            {repo && (
-
-                <IconButton to={repo} text="Repository" icon={LuGithub}/>
-            )}
             {demo && (
               <IconButton to={demo} text="Live Demo" icon={LuCode}/>
             )}
