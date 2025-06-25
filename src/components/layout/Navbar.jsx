@@ -7,7 +7,7 @@ import { navItems } from '../../data/navData'; // Asegúrate de que esta ruta se
 const Logo = () => (
   <a
     onClick={() => scroll.scrollToTop({ duration: 800, smooth: "easeInOutQuart" })}
-    className="relative inline-block group cursor-pointer"
+    className="relative inline-block cursor-pointer group"
     aria-label="Ir a la sección de Inicio"
   >
     <h1 className="text-3xl font-bold text-black uppercase">
@@ -89,7 +89,7 @@ const DesktopNav = ({ activeSection }) => {
               spy={true}
               smooth={true}
               offset={desktopScrollOffset} // Usa el offset para desktop
-              duration={500}
+              duration={1000}
               className={`relative font-semibold transition-colors duration-400 text-lg cursor-pointer
                 ${activeSection === id ? 'text-emerald-500' : 'text-black'}
                 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-emerald-500 after:transition-all after:duration-400
@@ -133,7 +133,7 @@ const MobileNav = ({ activeSection }) => {
               spy={true}
               smooth={true}
               offset={mobileScrollOffset} // ¡Usa el offset ajustado para móvil!
-              duration={500}
+              duration={1000}
               className={`flex flex-col items-center text-xs transition-colors duration-300 p-2 cursor-pointer
                 ${activeSection === id ? 'text-emerald-500' : 'text-black'}`}
               activeClass="active"
