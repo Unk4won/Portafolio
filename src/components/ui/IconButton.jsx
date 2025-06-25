@@ -4,8 +4,8 @@ import { Link as ScrollLink } from 'react-scroll';
  * IconButton
  * Renders a button/adaptive link with optional icon.
  * - Soporta enlaces externos (href), anclas internas y botones normales.
- * - Variedades visuales: primary, secondary, tech-tag.
- * - Evita efectos hover pegajosos en dispositivos táctiles.
+ * - Variedades visuales: primary, secondary.
+ * - Se desactiva cuando to="#" o to no es válido.
  */
 const IconButton = ({
   text = "Button",
@@ -14,7 +14,7 @@ const IconButton = ({
   variant = "primary",
   onClick,
   target,
-  rel
+  rel,
 }) => {
   const base = "relative font-medium text-sm md:text-lg tracking-wide rounded-[0.8em] cursor-pointer overflow-hidden transition-all duration-200 group flex items-center justify-center";
   const iconClass = "w-5 h-5 mr-2";
@@ -24,8 +24,14 @@ const IconButton = ({
     secondary: `${base} border border-emerald-500 text-emerald-600 hover:bg-emerald-50 active:bg-emerald-100`,
   };
 
-  const isExternal = /^https?:\/\//.test(to) || to.startsWith('mailto:');
-  const isAnchor = to.startsWith('#');
+  const isExternal = /^https?:\/\//.test(to) || to.startsWith("mailto:");
+  const isAnchor = to.startsWith("#");
+  const isDisabled = !to || to === "#";
+
+  const combinedClass = `${styles[variant]} px-5 py-3 ${
+    isDisabled ? "opacity-50 cursor-not-allowed pointer-events-none" : ""
+  }`;
+
   const content = (
     <>
       <span className="relative z-10 flex items-center">
@@ -39,28 +45,52 @@ const IconButton = ({
   );
 
   const commonProps = {
-    className: `${styles[variant]} px-5 py-3`,
-    'aria-label': text,
-    onClick: e => {
+    className: combinedClass,
+    "aria-label": text,
+    onClick: (e) => {
+      if (isDisabled) return;
       e.currentTarget.blur();
       onClick?.(e);
     },
-
   };
 
-  if (isExternal) {
-    return <a href={to} target={target || "_blank"} rel={rel || "noopener noreferrer"} {...commonProps}>{content}</a>;
+  if (isExternal && !isDisabled) {
+    return (
+      <a
+        href={to}
+        target={target || "_blank"}
+        rel={rel || "noopener noreferrer"}
+        {...commonProps}
+      >
+        {content}
+      </a>
+    );
   }
 
-  if (isAnchor) {
+  if (isAnchor && !isDisabled) {
     return (
-      <ScrollLink to={to.slice(1)} spy smooth offset={-70} duration={500} {...commonProps}>
+      <ScrollLink
+        to={to.slice(1)}
+        spy
+        smooth
+        offset={-70}
+        duration={500}
+        {...commonProps}
+      >
         {content}
       </ScrollLink>
     );
   }
 
-  return <button type="button" {...commonProps}>{content}</button>;
+  return (
+    <button
+      type="button"
+      disabled={isDisabled}
+      {...commonProps}
+    >
+      {content}
+    </button>
+  );
 };
 
 export default IconButton;
