@@ -69,7 +69,7 @@ const Button = ({
         spy={true}
         smooth={true}
         offset={-70}
-        duration={500}
+        duration={1000}
         className={`${combinedClasses} px-5 py-3`}
         aria-label={text}
         onClick={(e) => {
