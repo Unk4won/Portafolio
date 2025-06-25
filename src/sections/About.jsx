@@ -57,7 +57,7 @@ const currentSectionColor = "white"
         <div className="flex flex-wrap gap-4 pt-4">
           <Button
             variant="primary"
-            to="#https://unk4won.github.io/cv-personal/"
+            to="https://unk4won.github.io/cv-personal/"
             rel="noopener noreferrer"
             text="View CV"
           />
