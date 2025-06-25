@@ -86,7 +86,8 @@ const currentSectionColor = "white"
           loading="lazy"
         />
       </div>
-          <div className="absolute bottom-0 left-0 z-10 w-full">
+        
+      <div className="absolute bottom-0 left-0 z-10 w-full">
       <WaveDivider  from={prevSectionColor} to={currentSectionColor} />
       </div>
     </SectionWrapper>

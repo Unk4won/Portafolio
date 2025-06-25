@@ -15,7 +15,7 @@ const currentSectionColor = "white"
     // Contenedor semántico accesible con fondo adaptable claro/oscuro
     <SectionWrapper
       id="skills"
-      colorSection="bg-white dark:bg-black"
+      colorSection=" dark:bg-black"
       role="region"
       aria-labelledby="skills-main-heading"
     >
